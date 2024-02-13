@@ -9,4 +9,3 @@
 [ ] display "stop" button when counting down.
 [ ] stop timer on "stop" button click.
 [ ] display "resume" button if paused.
-# pomodoroTimer
