@@ -1,6 +1,9 @@
 const startButtonEl = document.getElementById("start");
 
 startButtonEl.addEventListener("click", function () {
+  hideStartButton();
+  showStopButton();
+
   const time = document.getElementById("timer").innerHTML;
   const timeValues = time.split(":");
   const minutes = Number(timeValues[0]);
@@ -23,3 +26,11 @@ startButtonEl.addEventListener("click", function () {
     }
   }, 1000);
 });
+
+function hideStartButton() {
+  startButtonEl.style.display = "none";
+}
+
+function showStopButton() {
+  document.getElementById("stop").style.display = "block";
+}
