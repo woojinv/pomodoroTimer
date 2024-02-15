@@ -1,6 +1,8 @@
 const startButtonEl = document.getElementById('start');
 const stopButtonEl = document.getElementById('stop');
 
+let timer;
+
 startButtonEl.addEventListener('click', function () {
   hideStartButton();
   showStopButton();
@@ -11,7 +13,7 @@ startButtonEl.addEventListener('click', function () {
   const seconds = Number(timeValues[1]);
   let totalSeconds = minutes * 60 + seconds;
 
-  let x = setInterval(function () {
+  timer = setInterval(function () {
     totalSeconds -= 1;
 
     const newMinutes = Math.floor(totalSeconds / 60);
@@ -21,9 +23,18 @@ startButtonEl.addEventListener('click', function () {
     document.getElementById('timer').innerHTML = `${formattedMinutes}:${formattedSeconds}`;
 
     if (totalSeconds === 0) {
-      clearInterval(x);
+      clearInterval(timer);
     }
   }, 1000);
+});
+
+stopButtonEl.addEventListener('click', function () {
+  // hide the stop button
+  stopButtonEl.style.display = 'none';
+  // show the start button
+  startButtonEl.style.display = 'block';
+
+  clearInterval(timer);
 });
 
 function hideStartButton() {
