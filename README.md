@@ -13,3 +13,19 @@
 - [x] add reset button functionality
 - [ ] display work / rest header
 - [ ] display "resume" button if paused.
+
+## Functional Requirements
+
+- When the "start" button is clicked,
+
+  - [x] the timer should countdown to zero.
+  - [x] The "start" button should switch to "stop".
+
+- When the "stop" button is clicked,
+
+  - [x] the timer should stop.
+  - [x] the "stop" button should switch to "start".
+
+- When the timer reaches "00:00",
+  - [x] the "stop" button should switch to "reset".
+  - [ ] the rest timer should display with a time of "05:00".
