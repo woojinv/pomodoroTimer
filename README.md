@@ -10,4 +10,6 @@
 - [x] display "stop" button when counting down.
 - [x] stop timer on "stop" button click.
 - [x] show "reset" button when timer reaches zero.
+- [x] add reset button functionality
+- [ ] display work / rest header
 - [ ] display "resume" button if paused.
