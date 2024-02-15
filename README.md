@@ -9,4 +9,5 @@
 - [x] countdown from 25.
 - [x] display "stop" button when counting down.
 - [x] stop timer on "stop" button click.
+- [x] show "reset" button when timer reaches zero.
 - [ ] display "resume" button if paused.

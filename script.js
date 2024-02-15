@@ -1,5 +1,6 @@
 const startButtonEl = document.getElementById('start');
 const stopButtonEl = document.getElementById('stop');
+const resetButtonEl = document.getElementById('reset');
 
 let timer;
 
@@ -24,6 +25,10 @@ startButtonEl.addEventListener('click', function () {
 
     if (totalSeconds === 0) {
       clearInterval(timer);
+      // hide stop button
+      stopButtonEl.style.display = 'none';
+      // show reset button
+      resetButtonEl.style.display = 'block';
     }
   }, 1000);
 });
