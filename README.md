@@ -31,6 +31,10 @@
   - [x] the timer should stop.
   - [x] the "stop" button should switch to "start".
 
-- When the timer reaches "00:00",
+- When the pomodoro period timer reaches "00:00",
   - [x] the "stop" button should switch to "reset".
-  - [ ] the rest timer should display with a time of "05:00".
+  - [ ] the short break timer should display with a time of "05:00".
+
+## General notes
+
+- have separate timers that are hidden and are toggled based on what interval is currently active.
