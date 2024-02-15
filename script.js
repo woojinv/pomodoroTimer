@@ -1,11 +1,12 @@
-const startButtonEl = document.getElementById("start");
+const startButtonEl = document.getElementById('start');
+const stopButtonEl = document.getElementById('stop');
 
-startButtonEl.addEventListener("click", function () {
+startButtonEl.addEventListener('click', function () {
   hideStartButton();
   showStopButton();
 
-  const time = document.getElementById("timer").innerHTML;
-  const timeValues = time.split(":");
+  const time = document.getElementById('timer').innerHTML;
+  const timeValues = time.split(':');
   const minutes = Number(timeValues[0]);
   const seconds = Number(timeValues[1]);
   let totalSeconds = minutes * 60 + seconds;
@@ -14,12 +15,10 @@ startButtonEl.addEventListener("click", function () {
     totalSeconds -= 1;
 
     const newMinutes = Math.floor(totalSeconds / 60);
-    const formattedMinutes = newMinutes < 10 ? "0" + newMinutes : newMinutes;
+    const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
     const newSeconds = totalSeconds % 60;
-    const formattedSeconds = newSeconds < 10 ? "0" + newSeconds : newSeconds;
-    document.getElementById(
-      "timer"
-    ).innerHTML = `${formattedMinutes}:${formattedSeconds}`;
+    const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+    document.getElementById('timer').innerHTML = `${formattedMinutes}:${formattedSeconds}`;
 
     if (totalSeconds === 0) {
       clearInterval(x);
@@ -28,9 +27,9 @@ startButtonEl.addEventListener("click", function () {
 });
 
 function hideStartButton() {
-  startButtonEl.style.display = "none";
+  startButtonEl.style.display = 'none';
 }
 
 function showStopButton() {
-  document.getElementById("stop").style.display = "block";
+  stopButtonEl.style.display = 'block';
 }
