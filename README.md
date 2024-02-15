@@ -21,6 +21,11 @@
   - [x] the timer should countdown to zero.
   - [x] The "start" button should switch to "stop".
 
+- If the "reset" button is clicked while counting down,
+
+  - [x] the timer should stop and reset to the previous interval length.
+  - [x] the "stop" button should switch to "start".
+
 - When the "stop" button is clicked,
 
   - [x] the timer should stop.

@@ -1,3 +1,4 @@
+const pomodoroSeconds = 5;
 const shortRestInSeconds = 300;
 
 const timerEl = document.getElementById('timer');
@@ -25,8 +26,6 @@ startButtonEl.addEventListener('click', function () {
       clearInterval(timer);
       // hide stop button
       stopButtonEl.style.display = 'none';
-      // show reset button
-      resetButtonEl.style.display = 'block';
     }
   }, 1000);
 });
@@ -41,12 +40,15 @@ stopButtonEl.addEventListener('click', function () {
 });
 
 resetButtonEl.addEventListener('click', function () {
-  // hide reset button
-  resetButtonEl.style.display = 'none';
-  // show start button
+  // stop timer
+  clearInterval(timer);
+
+  // hide the stop button
+  stopButtonEl.style.display = 'none';
+  // show the start button
   startButtonEl.style.display = 'block';
   // reset displayed time.
-  timerEl.innerHTML = timeFormatter(shortRestInSeconds);
+  timerEl.innerHTML = timeFormatter(pomodoroSeconds);
 });
 
 function hideStartButton() {
