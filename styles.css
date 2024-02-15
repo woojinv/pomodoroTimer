@@ -2,6 +2,10 @@
   display: none;
 }
 
-#timer {
+.timer {
   font-size: xx-large;
+}
+
+#shortBreakContainer {
+  display: none;
 }

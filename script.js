@@ -1,12 +1,34 @@
 const pomodoroSeconds = 5;
 const shortRestInSeconds = 300;
 
+const pomodoroButton = document.getElementById('pomodoroButton');
+const shortBreakButton = document.getElementById('shortBreakButton');
+
+const pomodoroContainer = document.getElementById('pomodoroContainer');
+const shortBreakContainer = document.getElementById('shortBreakContainer');
+
 const timerEl = document.getElementById('timer');
 const startButtonEl = document.getElementById('start');
 const stopButtonEl = document.getElementById('stop');
 const resetButtonEl = document.getElementById('reset');
 
 let timer;
+
+pomodoroButton.addEventListener('click', function () {
+  // hide other timers
+  shortBreakContainer.style.display = 'none';
+
+  // display pomodoro timer
+  pomodoroContainer.style.display = 'block';
+});
+
+shortBreakButton.addEventListener('click', function () {
+  // hide other timers
+  document.getElementById('pomodoroContainer').style.display = 'none';
+
+  // display the short break timer.
+  shortBreakContainer.style.display = 'block';
+});
 
 startButtonEl.addEventListener('click', function () {
   hideStartButton();
@@ -26,6 +48,11 @@ startButtonEl.addEventListener('click', function () {
       clearInterval(timer);
       // hide stop button
       stopButtonEl.style.display = 'none';
+
+      // hide pomodoro timer
+      document.getElementById('pomodoroContainer').style.display = 'none';
+      // show short break timer
+      document.getElementById('shortBreakContainer').style.display = 'block';
     }
   }, 1000);
 });

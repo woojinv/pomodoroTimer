@@ -16,6 +16,10 @@
 
 ## Functional Requirements
 
+- When the Short Break button is clicked,
+
+  - [ ] the pomodoro timer should be replaced with the short break timer.
+
 - When the "start" button is clicked,
 
   - [x] the timer should countdown to zero.
