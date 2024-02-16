@@ -1,3 +1,4 @@
+// Constants
 const pomodoroSeconds = 5;
 const shortBreakSeconds = 6;
 const longBreakSeconds = 7;
@@ -30,6 +31,7 @@ const pomodoroResetButton = document.getElementById('pomodoroResetButton');
 const shortBreakResetButton = document.getElementById('shortBreakResetButton');
 const longBreakResetButton = document.getElementById('longBreakResetButton');
 
+// Global Variables
 let pomodoroTimer;
 let shortBreakTimer;
 let longBreakTimer;
