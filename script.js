@@ -1,7 +1,7 @@
 // Constants
-const pomodoroSeconds = 5;
-const shortBreakSeconds = 6;
-const longBreakSeconds = 7;
+const pomodoroSeconds = 25 * 60;
+const shortBreakSeconds = 5 * 60;
+const longBreakSeconds = 15 * 60;
 
 // Navigation buttons
 const pomodoroNavButton = document.getElementById('pomodoroNavButton');
