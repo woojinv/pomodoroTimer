@@ -99,7 +99,11 @@ pomodoroStopButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
 });
 
-
+shortBreakStopButton.addEventListener('click', function () {
+  hide(shortBreakStopButton);
+  show(shortBreakStartButton);
+  stopTimer(shortBreakTimer);
+});
 
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
