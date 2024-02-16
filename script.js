@@ -61,6 +61,7 @@ pomodoroNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(pomodoroContainer);
+  pomodoroStartButton.focus();
 });
 
 shortBreakNavButton.addEventListener('click', function () {
@@ -68,6 +69,7 @@ shortBreakNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(shortBreakContainer);
+  shortBreakStartButton.focus();
 });
 
 longBreakNavButton.addEventListener('click', function () {
@@ -75,6 +77,7 @@ longBreakNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
 
   show(longBreakContainer);
+  longBreakStartButton.focus();
 });
 
 /*
@@ -87,6 +90,7 @@ pomodoroStartButton.addEventListener('click', function () {
   hide(pomodoroStartButton);
 
   show(pomodoroStopButton);
+  pomodoroStopButton.focus();
   show(pomodoroResetButton);
 
   let totalSeconds = getTotalSeconds(pomodoroTimerEl);
@@ -109,7 +113,14 @@ pomodoroStartButton.addEventListener('click', function () {
       show(pomodoroStartButton);
 
       numPomodoros += 1;
-      numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
+
+      if (numPomodoros !== 4) {
+        show(shortBreakContainer);
+        shortBreakStartButton.focus();
+      } else {
+        show(longBreakContainer);
+        longBreakStartButton.focus();
+      }
 
       notify();
     }
@@ -123,6 +134,7 @@ shortBreakStartButton.addEventListener('click', function () {
   hide(shortBreakStartButton);
 
   show(shortBreakStopButton);
+  shortBreakStopButton.focus();
   show(shortBreakResetButton);
 
   let totalSeconds = getTotalSeconds(shortBreakTimerEl);
@@ -145,6 +157,7 @@ shortBreakStartButton.addEventListener('click', function () {
       show(shortBreakStartButton);
 
       show(pomodoroContainer);
+      pomodoroStartButton.focus();
 
       notify();
     }
@@ -158,6 +171,7 @@ longBreakStartButton.addEventListener('click', function () {
   hide(longBreakStartButton);
 
   show(longBreakStopButton);
+  longBreakStopButton.focus();
   show(longBreakResetButton);
 
   let totalSeconds = getTotalSeconds(longBreakTimerEl);
@@ -180,6 +194,7 @@ longBreakStartButton.addEventListener('click', function () {
       show(longBreakStartButton);
 
       show(pomodoroContainer);
+      pomodoroStartButton.focus();
 
       notify();
     }
@@ -192,18 +207,21 @@ longBreakStartButton.addEventListener('click', function () {
 pomodoroStopButton.addEventListener('click', function () {
   hide(pomodoroStopButton);
   show(pomodoroStartButton);
+  pomodoroStartButton.focus();
   stopTimer(pomodoroTimer);
 });
 
 shortBreakStopButton.addEventListener('click', function () {
   hide(shortBreakStopButton);
   show(shortBreakStartButton);
+  shortBreakStartButton.focus();
   stopTimer(shortBreakTimer);
 });
 
 longBreakStopButton.addEventListener('click', function () {
   hide(longBreakStopButton);
   show(longBreakStartButton);
+  longBreakStartButton.focus();
   stopTimer(longBreakTimer);
 });
 
@@ -259,6 +277,7 @@ function handlePomdoroReset() {
   hide(pomodoroStopButton);
 
   show(pomodoroStartButton);
+  pomodoroStartButton.focus();
 
   setTimerEl(pomodoroTimerEl, pomodoroSeconds);
 }
@@ -270,6 +289,7 @@ function handleShortBreakReset() {
   hide(shortBreakStopButton);
 
   show(shortBreakStartButton);
+  shortBreakStartButton.focus();
 
   setTimerEl(shortBreakTimerEl, shortBreakSeconds);
 }
@@ -281,6 +301,7 @@ function handleLongBreakReset() {
   hide(longBreakStopButton);
 
   show(longBreakStartButton);
+  longBreakStartButton.focus();
 
   setTimerEl(longBreakTimerEl, longBreakSeconds);
 }
