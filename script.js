@@ -38,6 +38,7 @@ let longBreakTimer;
 
 let numPomodoros = 0;
 
+// Get permission to send notifications.
 document.addEventListener('DOMContentLoaded', function () {
   if ('Notification' in window) {
     Notification.requestPermission().then((permission) => {
@@ -109,6 +110,27 @@ pomodoroStartButton.addEventListener('click', function () {
 
       numPomodoros += 1;
       numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
+      if (numPomodoros !== 4) {
+        show(shortBreakContainer);
+        if (Notification.permission === 'granted') {
+          new Notification("Time's up!", {
+            body: 'Break time! Take a 5-minute break.',
+            // Optionally, you can add an icon here
+          });
+        }
+
+        const audio = new Audio('./endPomodoro.wav');
+        audio.play();
+      } else {
+        show(longBreakContainer);
+        if (Notification.permission === 'granted') {
+          new Notification("Time's up!", {
+            body: 'Time for an extended break! Rest for 15 minutes.',
+            // Optionally, you can add an icon here
+            silent: false,
+          });
+        }
+      }
     }
   }, 1000);
 });
