@@ -198,7 +198,7 @@ function getTotalSeconds(timerEl) {
   return minutes * 60 + seconds;
 }
 
-function timeFormatter(seconds) {
+function getFormattedTime(seconds) {
   const newMinutes = Math.floor(seconds / 60);
   const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
   const newSeconds = seconds % 60;
@@ -207,5 +207,9 @@ function timeFormatter(seconds) {
 }
 
 function setTimerEl(timerEl, seconds) {
-  timerEl.innerHTML = timeFormatter(seconds);
+  const newMinutes = Math.floor(seconds / 60);
+  const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
+  const newSeconds = seconds % 60;
+  const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+  timerEl.innerHTML = `${formattedMinutes}:${formattedSeconds}`;
 }
