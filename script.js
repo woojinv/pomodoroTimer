@@ -34,6 +34,8 @@ let pomodoroTimer;
 let shortBreakTimer;
 let longBreakTimer;
 
+let numPomodoros = 0;
+
 pomodoroNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
   hide(longBreakContainer);
@@ -76,7 +78,8 @@ pomodoroStartButton.addEventListener('click', function () {
       setTimerEl(pomodoroTimerEl, pomodoroSeconds);
       show(pomodoroStartButton);
 
-      show(shortBreakContainer);
+      numPomodoros += 1;
+      numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
     }
   }, 1000);
 });
