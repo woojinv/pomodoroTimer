@@ -66,6 +66,9 @@ longBreakNavButton.addEventListener('click', function () {
  * Start Buttons
  */
 pomodoroStartButton.addEventListener('click', function () {
+  handleShortBreakReset();
+  handleLongBreakReset();
+
   hide(pomodoroStartButton);
 
   show(pomodoroStopButton);
@@ -94,12 +97,12 @@ pomodoroStartButton.addEventListener('click', function () {
       numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
     }
   }, 1000);
-
-  handleShortBreakReset();
-  handleLongBreakReset();
 });
 
 shortBreakStartButton.addEventListener('click', function () {
+  handlePomdoroReset();
+  handleLongBreakReset();
+
   hide(shortBreakStartButton);
 
   show(shortBreakStopButton);
@@ -127,12 +130,12 @@ shortBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
     }
   }, 1000);
-
-  handlePomdoroReset();
-  handleLongBreakReset();
 });
 
 longBreakStartButton.addEventListener('click', function () {
+  handlePomdoroReset();
+  handleShortBreakReset();
+
   hide(longBreakStartButton);
 
   show(longBreakStopButton);
@@ -160,9 +163,6 @@ longBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
     }
   }, 1000);
-
-  handlePomdoroReset();
-  handleShortBreakReset();
 });
 
 /*
