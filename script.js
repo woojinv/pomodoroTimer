@@ -41,7 +41,7 @@ startButtonEl.addEventListener('click', function () {
     timerEl.innerHTML = timeFormatter(totalSeconds);
 
     if (totalSeconds === 0) {
-      clearInterval(timer);
+      stopTimer();
       hide(stopButtonEl);
 
       hide(pomodoroContainer);
@@ -59,13 +59,11 @@ startButtonEl.addEventListener('click', function () {
 stopButtonEl.addEventListener('click', function () {
   hide(stopButtonEl);
   show(startButtonEl);
-  clearInterval(timer);
+  stopTimer();
 });
 
 resetButtonEl.addEventListener('click', function () {
-  // stop timer
-  clearInterval(timer);
-
+  stopTimer();
   hide(stopButtonEl);
   show(startButtonEl);
   // reset displayed time.
@@ -78,6 +76,10 @@ function show(domElement) {
 
 function hide(domElement) {
   domElement.style.display = 'none';
+}
+
+function stopTimer() {
+  clearInterval(timer);
 }
 
 function timeFormatter(seconds) {
