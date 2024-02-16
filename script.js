@@ -95,7 +95,8 @@ pomodoroStartButton.addEventListener('click', function () {
     }
   }, 1000);
 
-  stopOtherTimers(this);
+  handleShortBreakReset();
+  handleLongBreakReset();
 });
 
 shortBreakStartButton.addEventListener('click', function () {
@@ -127,7 +128,8 @@ shortBreakStartButton.addEventListener('click', function () {
     }
   }, 1000);
 
-  stopOtherTimers(this);
+  handlePomdoroReset();
+  handleLongBreakReset();
 });
 
 longBreakStartButton.addEventListener('click', function () {
@@ -159,7 +161,8 @@ longBreakStartButton.addEventListener('click', function () {
     }
   }, 1000);
 
-  stopOtherTimers(this);
+  handlePomdoroReset();
+  handleShortBreakReset();
 });
 
 /*
@@ -186,38 +189,9 @@ longBreakStopButton.addEventListener('click', function () {
 /*
  * Reset Buttons
  */
-pomodoroResetButton.addEventListener('click', function () {
-  stopTimer(pomodoroTimer);
-
-  hide(pomodoroResetButton);
-  hide(pomodoroStopButton);
-
-  show(pomodoroStartButton);
-
-  setTimerEl(pomodoroTimerEl, pomodoroSeconds);
-});
-
-shortBreakResetButton.addEventListener('click', function () {
-  stopTimer(shortBreakTimer);
-
-  hide(shortBreakResetButton);
-  hide(shortBreakStopButton);
-
-  show(shortBreakStartButton);
-
-  setTimerEl(shortBreakTimerEl, shortBreakSeconds);
-});
-
-longBreakResetButton.addEventListener('click', function () {
-  stopTimer(longBreakTimer);
-
-  hide(longBreakResetButton);
-  hide(longBreakStopButton);
-
-  show(longBreakStartButton);
-
-  setTimerEl(longBreakTimerEl, longBreakSeconds);
-});
+pomodoroResetButton.addEventListener('click', handlePomdoroReset);
+shortBreakResetButton.addEventListener('click', handleShortBreakReset);
+longBreakResetButton.addEventListener('click', handleLongBreakReset);
 
 /*
  * Helper Functions
@@ -257,31 +231,35 @@ function setTimerEl(timerEl, seconds) {
   timerEl.innerHTML = `${formattedMinutes}:${formattedSeconds}`;
 }
 
-function stopOtherTimers(clickedButton) {
-  if (clickedButton === pomodoroStartButton) {
-    hide(shortBreakStopButton);
-    show(shortBreakStartButton);
-    stopTimer(shortBreakTimer);
-    hide(longBreakStopButton);
-    show(longBreakStartButton);
-    stopTimer(longBreakTimer);
-  }
+function handlePomdoroReset() {
+  stopTimer(pomodoroTimer);
 
-  if (clickedButton === shortBreakStartButton) {
-    hide(pomodoroStopButton);
-    show(pomodoroStartButton);
-    stopTimer(pomodoroTimer);
-    hide(longBreakStopButton);
-    show(longBreakStartButton);
-    stopTimer(longBreakTimer);
-  }
+  hide(pomodoroResetButton);
+  hide(pomodoroStopButton);
 
-  if (clickedButton === longBreakStartButton) {
-    hide(pomodoroStopButton);
-    show(pomodoroStartButton);
-    stopTimer(pomodoroTimer);
-    hide(shortBreakStopButton);
-    show(shortBreakStartButton);
-    stopTimer(shortBreakTimer);
-  }
+  show(pomodoroStartButton);
+
+  setTimerEl(pomodoroTimerEl, pomodoroSeconds);
+}
+
+function handleShortBreakReset() {
+  stopTimer(shortBreakTimer);
+
+  hide(shortBreakResetButton);
+  hide(shortBreakStopButton);
+
+  show(shortBreakStartButton);
+
+  setTimerEl(shortBreakTimerEl, shortBreakSeconds);
+}
+
+function handleLongBreakReset() {
+  stopTimer(longBreakTimer);
+
+  hide(longBreakResetButton);
+  hide(longBreakStopButton);
+
+  show(longBreakStartButton);
+
+  setTimerEl(longBreakTimerEl, longBreakSeconds);
 }
