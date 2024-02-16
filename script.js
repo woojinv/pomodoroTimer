@@ -8,67 +8,70 @@ const shortBreakButton = document.getElementById('shortBreakButton');
 // Views
 const pomodoroContainer = document.getElementById('pomodoroContainer');
 const shortBreakContainer = document.getElementById('shortBreakContainer');
+const longBreakContainer = document.getElementById('longBreakContainer');
 
 // Timers
 const pomodoroTimerEl = document.getElementById('pomodoroTimer');
 
 // Timer buttons
-const startButtonEl = document.getElementById('pomodoroStartButton');
-const stopButtonEl = document.getElementById('pomodoroStopButton');
-const resetButtonEl = document.getElementById('pomodoroResetButton');
+const pomodoroStartButton = document.getElementById('pomodoroStartButton');
+const pomodoroStopButton = document.getElementById('pomodoroStopButton');
+const pomodoroResetButton = document.getElementById('pomodoroResetButton');
 
 let pomodoroTimer;
 
 pomodoroButton.addEventListener('click', function () {
   hide(shortBreakContainer);
+  hide(longBreakContainer);
+
   show(pomodoroContainer);
 });
 
 shortBreakButton.addEventListener('click', function () {
   hide(pomodoroContainer);
+  hide(longBreakContainer);
+
   show(shortBreakContainer);
 });
 
-startButtonEl.addEventListener('click', function () {
-  hide(startButtonEl);
+pomodoroStartButton.addEventListener('click', function () {
+  hide(pomodoroStartButton);
 
-  show(resetButtonEl);
-  show(stopButtonEl);
+  show(pomodoroStopButton);
+  show(pomodoroResetButton);
 
   let totalSeconds = getTotalSeconds(pomodoroTimerEl);
 
   pomodoroTimer = setInterval(function () {
     totalSeconds -= 1;
-    pomodoroTimerEl.innerHTML = timeFormatter(totalSeconds);
+    setTimerEl(pomodoroTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(pomodoroTimer);
-      hide(stopButtonEl);
 
+      hide(pomodoroStopButton);
       hide(pomodoroContainer);
 
       show(shortBreakContainer);
 
-      // reset pomodoro timer
-      pomodoroTimerEl.innerHTML = timeFormatter(pomodoroSeconds);
-      show(startButtonEl);
-      hide(resetButtonEl);
+      setTimerEl(pomodoroTimerEl, pomodoroSeconds);
+      show(pomodoroStartButton);
+      hide(pomodoroResetButton);
     }
   }, 1000);
 });
 
-stopButtonEl.addEventListener('click', function () {
-  hide(stopButtonEl);
-  show(startButtonEl);
+pomodoroStopButton.addEventListener('click', function () {
+  hide(pomodoroStopButton);
+  show(pomodoroStartButton);
   stopTimer(pomodoroTimer);
 });
 
-resetButtonEl.addEventListener('click', function () {
+pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
-  hide(stopButtonEl);
-  show(startButtonEl);
-  // reset displayed time.
-  pomodoroTimerEl.innerHTML = timeFormatter(pomodoroSeconds);
+  hide(pomodoroStopButton);
+  show(pomodoroStartButton);
+  setTimerEl(pomodoroTimerEl, pomodoroSeconds);
 });
 
 function show(domElement) {
@@ -97,4 +100,8 @@ function timeFormatter(seconds) {
   const newSeconds = seconds % 60;
   const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
   return `${formattedMinutes}:${formattedSeconds}`;
+}
+
+function setTimerEl(timerEl, seconds) {
+  timerEl.innerHTML = timeFormatter(seconds);
 }
