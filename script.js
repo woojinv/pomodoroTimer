@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if ('Notification' in window) {
     Notification.requestPermission().then((permission) => {
       if (permission === 'granted') {
-        console.log('Notification permission granted.');
+        new Notification('Notifications enabled');
       } else {
         console.log('Notification permission denied');
       }
@@ -110,29 +110,8 @@ pomodoroStartButton.addEventListener('click', function () {
 
       numPomodoros += 1;
       numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
-      if (numPomodoros !== 4) {
-        show(shortBreakContainer);
 
-        if (Notification.permission === 'granted') {
-          new Notification("Time's up!", {
-            body: 'Break time! Take a 5-minute break.',
-          });
-        }
-
-        const audio = new Audio('./notification-sounds/pomodoro-end.wav');
-        audio.play();
-      } else {
-        show(longBreakContainer);
-
-        if (Notification.permission === 'granted') {
-          new Notification("Time's up!", {
-            body: 'Time for an extended break! Rest for 15 minutes.',
-          });
-        }
-
-        const audio = new Audio('./notification-sounds/pomodoro-end.wav');
-        audio.play();
-      }
+      notify();
     }
   }, 1000);
 });
@@ -167,14 +146,7 @@ shortBreakStartButton.addEventListener('click', function () {
 
       show(pomodoroContainer);
 
-      if (Notification.permission === 'granted') {
-        new Notification("Time's up!", {
-          body: "Break's over! Back to work for 25 minutes.",
-        });
-      }
-
-      const audio = new Audio('./notification-sounds/short-break-end.mp3');
-      audio.play();
+      notify();
     }
   }, 1000);
 });
@@ -209,14 +181,7 @@ longBreakStartButton.addEventListener('click', function () {
 
       show(pomodoroContainer);
 
-      if (Notification.permission === 'granted') {
-        new Notification("Time's up!", {
-          body: "Break's over! Back to work for 25 minutes.",
-        });
-      }
-
-      const audio = new Audio('./notification-sounds/long-break-end.mp3');
-      audio.play();
+      notify();
     }
   }, 1000);
 });
@@ -318,4 +283,12 @@ function handleLongBreakReset() {
   show(longBreakStartButton);
 
   setTimerEl(longBreakTimerEl, longBreakSeconds);
+}
+
+function notify() {
+  if (Notification.permission === 'granted') {
+    new Notification("Time's up!");
+  }
+
+  new Audio('./notification-sounds/short-break-end.mp3').play();
 }
