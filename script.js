@@ -35,11 +35,7 @@ startButtonEl.addEventListener('click', function () {
   show(resetButtonEl);
   show(stopButtonEl);
 
-  const formattedTime = pomodoroTimerEl.innerHTML;
-  const timeValues = formattedTime.split(':');
-  const minutes = Number(timeValues[0]);
-  const seconds = Number(timeValues[1]);
-  let totalSeconds = minutes * 60 + seconds;
+  let totalSeconds = getTotalSeconds(pomodoroTimerEl);
 
   pomodoroTimer = setInterval(function () {
     totalSeconds -= 1;
@@ -85,6 +81,14 @@ function hide(domElement) {
 
 function stopTimer(timer) {
   clearInterval(timer);
+}
+
+function getTotalSeconds(timerEl) {
+  const formattedTime = timerEl.innerHTML;
+  const timeValues = formattedTime.split(':');
+  const minutes = Number(timeValues[0]);
+  const seconds = Number(timeValues[1]);
+  return minutes * 60 + seconds;
 }
 
 function timeFormatter(seconds) {
