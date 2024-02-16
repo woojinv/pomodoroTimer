@@ -107,9 +107,18 @@ shortBreakStopButton.addEventListener('click', function () {
 
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
+  hide(pomodoroResetButton);
   hide(pomodoroStopButton);
   show(pomodoroStartButton);
   setTimerEl(pomodoroTimerEl, pomodoroSeconds);
+});
+
+shortBreakResetButton.addEventListener('click', function () {
+  stopTimer(shortBreakTimer);
+  hide(shortBreakResetButton);
+  hide(shortBreakStopButton);
+  show(shortBreakStartButton);
+  setTimerEl(shortBreakTimerEl, shortBreakSeconds);
 });
 
 function show(domElement) {
