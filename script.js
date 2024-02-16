@@ -1,17 +1,16 @@
 const pomodoroSeconds = 5;
-const shortBreakSeconds = 300;
-
 const pomodoroButton = document.getElementById('pomodoroButton');
-const shortBreakButton = document.getElementById('shortBreakButton');
-
 const pomodoroContainer = document.getElementById('pomodoroContainer');
-const shortBreakContainer = document.getElementById('shortBreakContainer');
-
-const timerEl = document.getElementById('timer');
+const pomodoroTimerEl = document.getElementById('pomodoroTimer');
 const startButtonEl = document.getElementById('start');
 const stopButtonEl = document.getElementById('stop');
 const resetButtonEl = document.getElementById('reset');
 
+const shortBreakSeconds = 300;
+
+const shortBreakButton = document.getElementById('shortBreakButton');
+
+const shortBreakContainer = document.getElementById('shortBreakContainer');
 let timer;
 
 pomodoroButton.addEventListener('click', function () {
@@ -30,7 +29,7 @@ startButtonEl.addEventListener('click', function () {
   show(resetButtonEl);
   show(stopButtonEl);
 
-  const time = timerEl.innerHTML;
+  const time = pomodoroTimerEl.innerHTML;
   const timeValues = time.split(':');
   const minutes = Number(timeValues[0]);
   const seconds = Number(timeValues[1]);
@@ -38,7 +37,7 @@ startButtonEl.addEventListener('click', function () {
 
   timer = setInterval(function () {
     totalSeconds -= 1;
-    timerEl.innerHTML = timeFormatter(totalSeconds);
+    pomodoroTimerEl.innerHTML = timeFormatter(totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer();
@@ -49,7 +48,7 @@ startButtonEl.addEventListener('click', function () {
       show(shortBreakContainer);
 
       // reset pomodoro timer
-      timerEl.innerHTML = timeFormatter(pomodoroSeconds);
+      pomodoroTimerEl.innerHTML = timeFormatter(pomodoroSeconds);
       show(startButtonEl);
       hide(resetButtonEl);
     }
@@ -67,7 +66,7 @@ resetButtonEl.addEventListener('click', function () {
   hide(stopButtonEl);
   show(startButtonEl);
   // reset displayed time.
-  timerEl.innerHTML = timeFormatter(pomodoroSeconds);
+  pomodoroTimerEl.innerHTML = timeFormatter(pomodoroSeconds);
 });
 
 function show(domElement) {

@@ -14,6 +14,7 @@
 - [x] refactor to use common show/hide function
 - [x] display work / rest header
 - [x] display "resume" button if paused.
+- [ ] rename all generic Els to domain elements (startButton -> pomodoroStartButton)
 
 ## Functional Requirements
 
