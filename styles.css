@@ -1,4 +1,8 @@
-#stop {
+#pomodoroStopButton {
+  display: none;
+}
+
+#pomodoroResetButton {
   display: none;
 }
 
@@ -10,6 +14,6 @@
   display: none;
 }
 
-#reset {
+#longBreakContainer {
   display: none;
 }

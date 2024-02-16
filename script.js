@@ -1,17 +1,23 @@
 const pomodoroSeconds = 5;
-const pomodoroButton = document.getElementById('pomodoroButton');
-const pomodoroContainer = document.getElementById('pomodoroContainer');
-const pomodoroTimerEl = document.getElementById('pomodoroTimer');
-const startButtonEl = document.getElementById('start');
-const stopButtonEl = document.getElementById('stop');
-const resetButtonEl = document.getElementById('reset');
-
 const shortBreakSeconds = 300;
 
+// Navigation buttons
+const pomodoroButton = document.getElementById('pomodoroButton');
 const shortBreakButton = document.getElementById('shortBreakButton');
 
+// Views
+const pomodoroContainer = document.getElementById('pomodoroContainer');
 const shortBreakContainer = document.getElementById('shortBreakContainer');
-let timer;
+
+// Timers
+const pomodoroTimerEl = document.getElementById('pomodoroTimer');
+
+// Timer buttons
+const startButtonEl = document.getElementById('pomodoroStartButton');
+const stopButtonEl = document.getElementById('pomodoroStopButton');
+const resetButtonEl = document.getElementById('pomodoroResetButton');
+
+let pomodoroTimer;
 
 pomodoroButton.addEventListener('click', function () {
   hide(shortBreakContainer);
@@ -29,18 +35,18 @@ startButtonEl.addEventListener('click', function () {
   show(resetButtonEl);
   show(stopButtonEl);
 
-  const time = pomodoroTimerEl.innerHTML;
-  const timeValues = time.split(':');
+  const formattedTime = pomodoroTimerEl.innerHTML;
+  const timeValues = formattedTime.split(':');
   const minutes = Number(timeValues[0]);
   const seconds = Number(timeValues[1]);
   let totalSeconds = minutes * 60 + seconds;
 
-  timer = setInterval(function () {
+  pomodoroTimer = setInterval(function () {
     totalSeconds -= 1;
     pomodoroTimerEl.innerHTML = timeFormatter(totalSeconds);
 
     if (totalSeconds === 0) {
-      stopTimer();
+      stopTimer(pomodoroTimer);
       hide(stopButtonEl);
 
       hide(pomodoroContainer);
@@ -58,11 +64,11 @@ startButtonEl.addEventListener('click', function () {
 stopButtonEl.addEventListener('click', function () {
   hide(stopButtonEl);
   show(startButtonEl);
-  stopTimer();
+  stopTimer(pomodoroTimer);
 });
 
 resetButtonEl.addEventListener('click', function () {
-  stopTimer();
+  stopTimer(pomodoroTimer);
   hide(stopButtonEl);
   show(startButtonEl);
   // reset displayed time.
@@ -77,7 +83,7 @@ function hide(domElement) {
   domElement.style.display = 'none';
 }
 
-function stopTimer() {
+function stopTimer(timer) {
   clearInterval(timer);
 }
 
