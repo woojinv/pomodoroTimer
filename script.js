@@ -287,7 +287,10 @@ function handleLongBreakReset() {
 
 function notify() {
   if (Notification.permission === 'granted') {
-    new Notification("Time's up!");
+    new Notification("Time's up!").addEventListener('click', function () {
+      window.focus();
+      this.close();
+    });
   }
 
   new Audio('./notification-sounds/short-break-end.mp3').play();
