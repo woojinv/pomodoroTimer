@@ -148,6 +148,12 @@ shortBreakStopButton.addEventListener('click', function () {
   stopTimer(shortBreakTimer);
 });
 
+longBreakStopButton.addEventListener('click', function () {
+  hide(longBreakStopButton);
+  show(longBreakStartButton);
+  stopTimer(longBreakTimer);
+});
+
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
   hide(pomodoroResetButton);
