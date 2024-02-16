@@ -235,40 +235,6 @@ longBreakResetButton.addEventListener('click', handleLongBreakReset);
 /*
  * Helper Functions
  */
-function show(domElement) {
-  domElement.style.display = 'block';
-}
-
-function hide(domElement) {
-  domElement.style.display = 'none';
-}
-
-function stopTimer(timer) {
-  clearInterval(timer);
-}
-
-function getTotalSeconds(timerEl) {
-  const timeValues = timerEl.innerHTML.split(':');
-  const minutes = Number(timeValues[0]);
-  const seconds = Number(timeValues[1]);
-  return minutes * 60 + seconds;
-}
-
-function getFormattedTime(seconds) {
-  const newMinutes = Math.floor(seconds / 60);
-  const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
-  const newSeconds = seconds % 60;
-  const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
-  return `${formattedMinutes}:${formattedSeconds}`;
-}
-
-function setTimerEl(timerEl, seconds) {
-  const newMinutes = Math.floor(seconds / 60);
-  const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
-  const newSeconds = seconds % 60;
-  const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
-  timerEl.innerHTML = `${formattedMinutes}:${formattedSeconds}`;
-}
 
 function handlePomdoroReset() {
   stopTimer(pomodoroTimer);
@@ -304,6 +270,41 @@ function handleLongBreakReset() {
   longBreakStartButton.focus();
 
   setTimerEl(longBreakTimerEl, longBreakSeconds);
+}
+
+function show(domElement) {
+  domElement.style.display = 'block';
+}
+
+function hide(domElement) {
+  domElement.style.display = 'none';
+}
+
+function stopTimer(timer) {
+  clearInterval(timer);
+}
+
+function getTotalSeconds(timerEl) {
+  const timeValues = timerEl.innerHTML.split(':');
+  const minutes = Number(timeValues[0]);
+  const seconds = Number(timeValues[1]);
+  return minutes * 60 + seconds;
+}
+
+function getFormattedTime(seconds) {
+  const newMinutes = Math.floor(seconds / 60);
+  const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
+  const newSeconds = seconds % 60;
+  const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+  return `${formattedMinutes}:${formattedSeconds}`;
+}
+
+function setTimerEl(timerEl, seconds) {
+  const newMinutes = Math.floor(seconds / 60);
+  const formattedMinutes = newMinutes < 10 ? '0' + newMinutes : newMinutes;
+  const newSeconds = seconds % 60;
+  const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
+  timerEl.innerHTML = `${formattedMinutes}:${formattedSeconds}`;
 }
 
 function notify() {
