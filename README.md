@@ -15,8 +15,8 @@
 - [x] display work / rest header
 - [x] display "resume" button if paused.
 - [x] rename all generic Els to domain elements (startButton -> pomodoroStartButton)
+- [x] stop and reset other timers when starting a new timer so that multiple timers aren't counting down together.
 - [ ] think of scenarios for when to autofocus which buttons.
-- [ ] stop and reset other timers when starting a new timer so that multiple timers aren't counting down together.
 
 ## Functional Requirements
 
