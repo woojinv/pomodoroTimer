@@ -17,7 +17,8 @@
 - [x] rename all generic Els to domain elements (startButton -> pomodoroStartButton)
 - [x] stop and reset other timers when starting a new timer so that multiple timers aren't counting down together.
 - [x] implement notifications for timer end.
-- [ ] think of scenarios for when to autofocus which buttons.
+- [x] think of scenarios for when to autofocus which buttons.
+- [ ] display indicator for current active session.
 
 ## Functional Requirements
 
