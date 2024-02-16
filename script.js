@@ -2,8 +2,8 @@ const pomodoroSeconds = 5;
 const shortBreakSeconds = 300;
 
 // Navigation buttons
-const pomodoroButton = document.getElementById('pomodoroButton');
-const shortBreakButton = document.getElementById('shortBreakButton');
+const pomodoroNavButton = document.getElementById('pomodoroNavButton');
+const shortBreakNavButton = document.getElementById('shortBreakNavButton');
 
 // Views
 const pomodoroContainer = document.getElementById('pomodoroContainer');
@@ -20,14 +20,14 @@ const pomodoroResetButton = document.getElementById('pomodoroResetButton');
 
 let pomodoroTimer;
 
-pomodoroButton.addEventListener('click', function () {
+pomodoroNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
   hide(longBreakContainer);
 
   show(pomodoroContainer);
 });
 
-shortBreakButton.addEventListener('click', function () {
+shortBreakNavButton.addEventListener('click', function () {
   hide(pomodoroContainer);
   hide(longBreakContainer);
 
