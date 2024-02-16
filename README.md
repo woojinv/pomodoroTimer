@@ -17,6 +17,20 @@
 - [x] rename all generic Els to domain elements (startButton -> pomodoroStartButton)
 - [x] stop and reset other timers when starting a new timer so that multiple timers aren't counting down together.
 - [ ] think of scenarios for when to autofocus which buttons.
+- [ ] implement notifications for timer end.
+
+```
+function timerEnd() {
+  // Check if permission is granted
+  if (Notification.permission === "granted") {
+    // Create and display the notification
+    new Notification("Time's up!", {
+      body: 'Break time! Take a 5-minute break.',
+      // Optionally, you can add an icon here
+    });
+  }
+}
+```
 
 ## Functional Requirements
 
