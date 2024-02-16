@@ -19,6 +19,7 @@
 - [x] implement notifications for timer end.
 - [x] think of scenarios for when to autofocus which buttons.
 - [ ] display indicator for current active session.
+- [ ] fix focus state when navigating to active session. auto focus on stop button if counting down.
 
 ## Functional Requirements
 
