@@ -12,14 +12,14 @@
 - [x] show "reset" button when timer reaches zero.
 - [x] add reset button functionality
 - [x] refactor to use common show/hide function
-- [ ] display work / rest header
-- [ ] display "resume" button if paused.
+- [x] display work / rest header
+- [x] display "resume" button if paused.
 
 ## Functional Requirements
 
 - When the Short Break button is clicked,
 
-  - [ ] the pomodoro timer should be replaced with the short break timer.
+  - [x] the pomodoro timer should be replaced with the short break timer.
 
 - When the "start" button is clicked,
 
@@ -38,7 +38,7 @@
 
 - When the pomodoro period timer reaches "00:00",
   - [x] the "stop" button should switch to "reset".
-  - [ ] the short break timer should display with a time of "05:00".
+  - [x] the short break timer should display with a time of "05:00".
 
 ## General notes
 

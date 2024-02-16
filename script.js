@@ -1,5 +1,5 @@
 const pomodoroSeconds = 5;
-const shortRestInSeconds = 300;
+const shortBreakSeconds = 300;
 
 const pomodoroButton = document.getElementById('pomodoroButton');
 const shortBreakButton = document.getElementById('shortBreakButton');
