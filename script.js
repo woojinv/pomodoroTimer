@@ -36,6 +36,9 @@ let longBreakTimer;
 
 let numPomodoros = 0;
 
+/*
+ * Navigation Buttons
+ */
 pomodoroNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
   hide(longBreakContainer);
@@ -57,6 +60,9 @@ longBreakNavButton.addEventListener('click', function () {
   show(longBreakContainer);
 });
 
+/*
+ * Start Buttons
+ */
 pomodoroStartButton.addEventListener('click', function () {
   hide(pomodoroStartButton);
 
@@ -72,6 +78,7 @@ pomodoroStartButton.addEventListener('click', function () {
     if (totalSeconds === 0) {
       stopTimer(pomodoroTimer);
 
+      hide(longBreakContainer);
       hide(pomodoroContainer);
       hide(pomodoroStopButton);
       hide(pomodoroResetButton);
@@ -99,6 +106,7 @@ shortBreakStartButton.addEventListener('click', function () {
     if (totalSeconds === 0) {
       stopTimer(shortBreakTimer);
 
+      hide(longBreakContainer);
       hide(shortBreakContainer);
       hide(shortBreakStopButton);
       hide(shortBreakResetButton);
@@ -125,6 +133,7 @@ longBreakStartButton.addEventListener('click', function () {
     if (totalSeconds === 0) {
       stopTimer(longBreakTimer);
 
+      hide(shortBreakContainer);
       hide(longBreakContainer);
       hide(longBreakStopButton);
       hide(longBreakResetButton);
@@ -136,6 +145,9 @@ longBreakStartButton.addEventListener('click', function () {
   }, 1000);
 });
 
+/*
+ * Stop Buttons
+ */
 pomodoroStopButton.addEventListener('click', function () {
   hide(pomodoroStopButton);
   show(pomodoroStartButton);
@@ -154,6 +166,9 @@ longBreakStopButton.addEventListener('click', function () {
   stopTimer(longBreakTimer);
 });
 
+/*
+ * Reset Buttons
+ */
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
   hide(pomodoroResetButton);
@@ -178,6 +193,9 @@ longBreakResetButton.addEventListener('click', function () {
   setTimerEl(longBreakTimerEl, longBreakSeconds);
 });
 
+/*
+ * Helper Functions
+ */
 function show(domElement) {
   domElement.style.display = 'block';
 }
