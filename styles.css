@@ -1,10 +1,12 @@
 #pomodoroStopButton,
-#shortBreakStopButton {
+#shortBreakStopButton,
+#longBreakStopButton {
   display: none;
 }
 
 #pomodoroResetButton,
-#shortBreakResetButton {
+#shortBreakResetButton,
+#longBreakResetButton {
   display: none;
 }
 
