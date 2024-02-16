@@ -94,6 +94,8 @@ pomodoroStartButton.addEventListener('click', function () {
       numPomodoros === 4 ? show(longBreakContainer) : show(shortBreakContainer);
     }
   }, 1000);
+
+  stopOtherTimers(this);
 });
 
 shortBreakStartButton.addEventListener('click', function () {
@@ -124,6 +126,8 @@ shortBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
     }
   }, 1000);
+
+  stopOtherTimers(this);
 });
 
 longBreakStartButton.addEventListener('click', function () {
@@ -154,6 +158,8 @@ longBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
     }
   }, 1000);
+
+  stopOtherTimers(this);
 });
 
 /*
@@ -249,4 +255,33 @@ function setTimerEl(timerEl, seconds) {
   const newSeconds = seconds % 60;
   const formattedSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
   timerEl.innerHTML = `${formattedMinutes}:${formattedSeconds}`;
+}
+
+function stopOtherTimers(clickedButton) {
+  if (clickedButton === pomodoroStartButton) {
+    hide(shortBreakStopButton);
+    show(shortBreakStartButton);
+    stopTimer(shortBreakTimer);
+    hide(longBreakStopButton);
+    show(longBreakStartButton);
+    stopTimer(longBreakTimer);
+  }
+
+  if (clickedButton === shortBreakStartButton) {
+    hide(pomodoroStopButton);
+    show(pomodoroStartButton);
+    stopTimer(pomodoroTimer);
+    hide(longBreakStopButton);
+    show(longBreakStartButton);
+    stopTimer(longBreakTimer);
+  }
+
+  if (clickedButton === longBreakStartButton) {
+    hide(pomodoroStopButton);
+    show(pomodoroStartButton);
+    stopTimer(pomodoroTimer);
+    hide(shortBreakStopButton);
+    show(shortBreakStartButton);
+    stopTimer(shortBreakTimer);
+  }
 }
