@@ -110,6 +110,32 @@ shortBreakStartButton.addEventListener('click', function () {
   }, 1000);
 });
 
+longBreakStartButton.addEventListener('click', function () {
+  hide(longBreakStartButton);
+
+  show(longBreakStopButton);
+  show(longBreakResetButton);
+
+  let totalSeconds = getTotalSeconds(longBreakTimerEl);
+
+  longBreakTimer = setInterval(function () {
+    totalSeconds -= 1;
+    setTimerEl(longBreakTimerEl, totalSeconds);
+
+    if (totalSeconds === 0) {
+      stopTimer(longBreakTimer);
+
+      hide(longBreakContainer);
+      hide(longBreakStopButton);
+      hide(longBreakResetButton);
+      setTimerEl(longBreakTimerEl, longBreakSeconds);
+      show(longBreakStartButton);
+
+      show(pomodoroContainer);
+    }
+  }, 1000);
+});
+
 pomodoroStopButton.addEventListener('click', function () {
   hide(pomodoroStopButton);
   show(pomodoroStartButton);
