@@ -15,24 +15,20 @@ const resetButtonEl = document.getElementById('reset');
 let timer;
 
 pomodoroButton.addEventListener('click', function () {
-  // hide other timers
-  shortBreakContainer.style.display = 'none';
-
-  // display pomodoro timer
-  pomodoroContainer.style.display = 'block';
+  hide(shortBreakContainer);
+  show(pomodoroContainer);
 });
 
 shortBreakButton.addEventListener('click', function () {
-  // hide other timers
-  document.getElementById('pomodoroContainer').style.display = 'none';
-
-  // display the short break timer.
-  shortBreakContainer.style.display = 'block';
+  hide(pomodoroContainer);
+  show(shortBreakContainer);
 });
 
 startButtonEl.addEventListener('click', function () {
-  hideStartButton();
-  showStopButton();
+  hide(startButtonEl);
+
+  show(resetButtonEl);
+  show(stopButtonEl);
 
   const time = timerEl.innerHTML;
   const timeValues = time.split(':');
@@ -46,23 +42,23 @@ startButtonEl.addEventListener('click', function () {
 
     if (totalSeconds === 0) {
       clearInterval(timer);
-      // hide stop button
-      stopButtonEl.style.display = 'none';
+      hide(stopButtonEl);
 
-      // hide pomodoro timer
-      document.getElementById('pomodoroContainer').style.display = 'none';
-      // show short break timer
-      document.getElementById('shortBreakContainer').style.display = 'block';
+      hide(pomodoroContainer);
+
+      show(shortBreakContainer);
+
+      // reset pomodoro timer
+      timerEl.innerHTML = timeFormatter(pomodoroSeconds);
+      show(startButtonEl);
+      hide(resetButtonEl);
     }
   }, 1000);
 });
 
 stopButtonEl.addEventListener('click', function () {
-  // hide the stop button
-  stopButtonEl.style.display = 'none';
-  // show the start button
-  startButtonEl.style.display = 'block';
-
+  hide(stopButtonEl);
+  show(startButtonEl);
   clearInterval(timer);
 });
 
@@ -70,20 +66,18 @@ resetButtonEl.addEventListener('click', function () {
   // stop timer
   clearInterval(timer);
 
-  // hide the stop button
-  stopButtonEl.style.display = 'none';
-  // show the start button
-  startButtonEl.style.display = 'block';
+  hide(stopButtonEl);
+  show(startButtonEl);
   // reset displayed time.
   timerEl.innerHTML = timeFormatter(pomodoroSeconds);
 });
 
-function hideStartButton() {
-  startButtonEl.style.display = 'none';
+function show(domElement) {
+  domElement.style.display = 'block';
 }
 
-function showStopButton() {
-  stopButtonEl.style.display = 'block';
+function hide(domElement) {
+  domElement.style.display = 'none';
 }
 
 function timeFormatter(seconds) {

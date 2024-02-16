@@ -11,6 +11,7 @@
 - [x] stop timer on "stop" button click.
 - [x] show "reset" button when timer reaches zero.
 - [x] add reset button functionality
+- [x] refactor to use common show/hide function
 - [ ] display work / rest header
 - [ ] display "resume" button if paused.
 
