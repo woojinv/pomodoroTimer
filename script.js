@@ -81,10 +81,13 @@ pomodoroStartButton.addEventListener('click', function () {
       stopTimer(pomodoroTimer);
 
       hide(longBreakContainer);
+
       hide(pomodoroContainer);
       hide(pomodoroStopButton);
       hide(pomodoroResetButton);
+
       setTimerEl(pomodoroTimerEl, pomodoroSeconds);
+
       show(pomodoroStartButton);
 
       numPomodoros += 1;
@@ -109,10 +112,13 @@ shortBreakStartButton.addEventListener('click', function () {
       stopTimer(shortBreakTimer);
 
       hide(longBreakContainer);
+
       hide(shortBreakContainer);
       hide(shortBreakStopButton);
       hide(shortBreakResetButton);
+
       setTimerEl(shortBreakTimerEl, shortBreakSeconds);
+
       show(shortBreakStartButton);
 
       show(pomodoroContainer);
@@ -136,10 +142,13 @@ longBreakStartButton.addEventListener('click', function () {
       stopTimer(longBreakTimer);
 
       hide(shortBreakContainer);
+
       hide(longBreakContainer);
       hide(longBreakStopButton);
       hide(longBreakResetButton);
+
       setTimerEl(longBreakTimerEl, longBreakSeconds);
+
       show(longBreakStartButton);
 
       show(pomodoroContainer);
@@ -173,25 +182,34 @@ longBreakStopButton.addEventListener('click', function () {
  */
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
+
   hide(pomodoroResetButton);
   hide(pomodoroStopButton);
+
   show(pomodoroStartButton);
+
   setTimerEl(pomodoroTimerEl, pomodoroSeconds);
 });
 
 shortBreakResetButton.addEventListener('click', function () {
   stopTimer(shortBreakTimer);
+
   hide(shortBreakResetButton);
   hide(shortBreakStopButton);
+
   show(shortBreakStartButton);
+
   setTimerEl(shortBreakTimerEl, shortBreakSeconds);
 });
 
 longBreakResetButton.addEventListener('click', function () {
   stopTimer(longBreakTimer);
+
   hide(longBreakResetButton);
   hide(longBreakStopButton);
+
   show(longBreakStartButton);
+
   setTimerEl(longBreakTimerEl, longBreakSeconds);
 });
 
@@ -211,8 +229,7 @@ function stopTimer(timer) {
 }
 
 function getTotalSeconds(timerEl) {
-  const formattedTime = timerEl.innerHTML;
-  const timeValues = formattedTime.split(':');
+  const timeValues = timerEl.innerHTML.split(':');
   const minutes = Number(timeValues[0]);
   const seconds = Number(timeValues[1]);
   return minutes * 60 + seconds;
