@@ -170,6 +170,14 @@ shortBreakResetButton.addEventListener('click', function () {
   setTimerEl(shortBreakTimerEl, shortBreakSeconds);
 });
 
+longBreakResetButton.addEventListener('click', function () {
+  stopTimer(longBreakTimer);
+  hide(longBreakResetButton);
+  hide(longBreakStopButton);
+  show(longBreakStartButton);
+  setTimerEl(longBreakTimerEl, longBreakSeconds);
+});
+
 function show(domElement) {
   domElement.style.display = 'block';
 }
