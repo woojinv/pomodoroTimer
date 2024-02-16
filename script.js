@@ -38,6 +38,20 @@ let longBreakTimer;
 
 let numPomodoros = 0;
 
+document.addEventListener('DOMContentLoaded', function () {
+  if ('Notification' in window) {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+      } else {
+        console.log('Notification permission denied');
+      }
+    });
+  } else {
+    console.log('Notifications not available in this browser.');
+  }
+});
+
 /*
  * Navigation Buttons
  */
