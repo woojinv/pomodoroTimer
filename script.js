@@ -1,5 +1,5 @@
 const pomodoroSeconds = 5;
-const shortBreakSeconds = 300;
+const shortBreakSeconds = 6;
 
 // Navigation buttons
 const pomodoroNavButton = document.getElementById('pomodoroNavButton');
@@ -12,13 +12,20 @@ const longBreakContainer = document.getElementById('longBreakContainer');
 
 // Timers
 const pomodoroTimerEl = document.getElementById('pomodoroTimer');
+const shortBreakTimerEl = document.getElementById('shortBreakTimer');
 
 // Timer buttons
 const pomodoroStartButton = document.getElementById('pomodoroStartButton');
+const shortBreakStartButton = document.getElementById('shortBreakStartButton');
+
 const pomodoroStopButton = document.getElementById('pomodoroStopButton');
+const shortBreakStopButton = document.getElementById('shortBreakStopButton');
+
 const pomodoroResetButton = document.getElementById('pomodoroResetButton');
+const shortBreakResetButton = document.getElementById('shortBreakResetButton');
 
 let pomodoroTimer;
+let shortBreakTimer;
 
 pomodoroNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
@@ -49,14 +56,39 @@ pomodoroStartButton.addEventListener('click', function () {
     if (totalSeconds === 0) {
       stopTimer(pomodoroTimer);
 
-      hide(pomodoroStopButton);
       hide(pomodoroContainer);
-
-      show(shortBreakContainer);
-
+      hide(pomodoroStopButton);
+      hide(pomodoroResetButton);
       setTimerEl(pomodoroTimerEl, pomodoroSeconds);
       show(pomodoroStartButton);
-      hide(pomodoroResetButton);
+
+      show(shortBreakContainer);
+    }
+  }, 1000);
+});
+
+shortBreakStartButton.addEventListener('click', function () {
+  hide(shortBreakStartButton);
+
+  show(shortBreakStopButton);
+  show(shortBreakResetButton);
+
+  let totalSeconds = getTotalSeconds(shortBreakTimerEl);
+
+  shortBreakTimer = setInterval(function () {
+    totalSeconds -= 1;
+    setTimerEl(shortBreakTimerEl, totalSeconds);
+
+    if (totalSeconds === 0) {
+      stopTimer(shortBreakTimer);
+
+      hide(shortBreakContainer);
+      hide(shortBreakStopButton);
+      hide(shortBreakResetButton);
+      setTimerEl(shortBreakTimerEl, shortBreakSeconds);
+      show(shortBreakStartButton);
+
+      show(pomodoroContainer);
     }
   }, 1000);
 });
@@ -66,6 +98,8 @@ pomodoroStopButton.addEventListener('click', function () {
   show(pomodoroStartButton);
   stopTimer(pomodoroTimer);
 });
+
+
 
 pomodoroResetButton.addEventListener('click', function () {
   stopTimer(pomodoroTimer);
