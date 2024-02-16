@@ -1,8 +1,10 @@
-#pomodoroStopButton {
+#pomodoroStopButton,
+#shortBreakStopButton {
   display: none;
 }
 
-#pomodoroResetButton {
+#pomodoroResetButton,
+#shortBreakResetButton {
   display: none;
 }
 
@@ -10,10 +12,7 @@
   font-size: xx-large;
 }
 
-#shortBreakContainer {
-  display: none;
-}
-
+#shortBreakContainer,
 #longBreakContainer {
   display: none;
 }
