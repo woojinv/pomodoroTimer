@@ -45,6 +45,8 @@ let longBreakActive = false;
 
 let numPomodoros = 0;
 
+pomodoroStartButton.focus();
+
 // Get permission to send notifications.
 document.addEventListener('DOMContentLoaded', function () {
   if ('Notification' in window) {
