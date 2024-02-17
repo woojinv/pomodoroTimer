@@ -36,6 +36,10 @@ let pomodoroTimer;
 let shortBreakTimer;
 let longBreakTimer;
 
+let pomodoroActive = false;
+let shortBreakActive = false;
+let longBreakActive = false;
+
 let numPomodoros = 0;
 
 // Get permission to send notifications.
@@ -61,7 +65,7 @@ pomodoroNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(pomodoroContainer);
-  pomodoroStartButton.focus();
+  pomodoroActive ? pomodoroStopButton.focus() : pomodoroStartButton.focus();
 });
 
 shortBreakNavButton.addEventListener('click', function () {
@@ -96,11 +100,13 @@ pomodoroStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(pomodoroTimerEl);
 
   pomodoroTimer = setInterval(function () {
+    pomodoroActive = true;
     totalSeconds -= 1;
     setTimerEl(pomodoroTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(pomodoroTimer);
+      pomodoroActive = false;
 
       hide(longBreakContainer);
 
@@ -209,6 +215,7 @@ pomodoroStopButton.addEventListener('click', function () {
   show(pomodoroStartButton);
   pomodoroStartButton.focus();
   stopTimer(pomodoroTimer);
+  pomodoroActive = false;
 });
 
 shortBreakStopButton.addEventListener('click', function () {
@@ -238,6 +245,7 @@ longBreakResetButton.addEventListener('click', handleLongBreakReset);
 
 function handlePomdoroReset() {
   stopTimer(pomodoroTimer);
+  pomodoroActive = false;
 
   hide(pomodoroResetButton);
   hide(pomodoroStopButton);
