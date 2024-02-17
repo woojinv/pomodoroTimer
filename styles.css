@@ -45,31 +45,15 @@
         height: 50px;
         width: 150px;
       }
-
-      #pomodoroContainer {
-        #pomodoroStopButton,
-        #pomodoroResetButton {
-          display: none;
-        }
-      }
-
-      #shortBreakContainer {
-        display: none;
-
-        #shortBreakStopButton,
-        #shortBreakResetButton {
-          display: none;
-        }
-      }
-
-      #longBreakContainer {
-        display: none;
-
-        #longBreakStopButton,
-        #longBreakResetButton {
-          display: none;
-        }
-      }
     }
   }
+}
+
+/* Utility classes */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline-block;
 }

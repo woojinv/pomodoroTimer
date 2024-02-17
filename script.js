@@ -82,9 +82,7 @@ shortBreakNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(shortBreakContainer);
-  shortBreakActive
-    ? shortBreakStopButton.focus()
-    : shortBreakStartButton.focus();
+  shortBreakActive ? shortBreakStopButton.focus() : shortBreakStartButton.focus();
 
   this.style.backgroundColor = accentColor;
   pomodoroNavButton.style.backgroundColor = defaultButtonColor;
@@ -318,11 +316,13 @@ function handleLongBreakReset() {
 }
 
 function show(domElement) {
-  domElement.style.display = 'inline-block';
+  domElement.classList.remove('hidden');
+  domElement.classList.add('visible');
 }
 
 function hide(domElement) {
-  domElement.style.display = 'none';
+  domElement.classList.remove('visible');
+  domElement.classList.add('hidden');
 }
 
 function stopTimer(timer) {
