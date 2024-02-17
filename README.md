@@ -20,7 +20,8 @@
 - [x] think of scenarios for when to autofocus which buttons.
 - [x] fix focus state when navigating to active session. auto focus on stop button if counting down.
 - [x] display indicator for current active session.
-- [ ] center content
+- [x] center content
+- [ ] decide on css
 
 ## Functional Requirements
 
