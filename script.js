@@ -318,7 +318,7 @@ function handleLongBreakReset() {
 }
 
 function show(domElement) {
-  domElement.style.display = 'block';
+  domElement.style.display = 'inline-block';
 }
 
 function hide(domElement) {
