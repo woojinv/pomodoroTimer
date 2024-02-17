@@ -1,64 +1,75 @@
 * {
   box-sizing: border-box;
-}
 
-body {
-  font-family: 'Arial';
-  margin: 0;
+  body {
+    font-family: 'Arial';
+    margin: 0;
 
-  main {
-    width: 375px;
-    margin: auto;
-    text-align: center;
+    main {
+      width: 400px;
+      margin: auto;
+      text-align: center;
 
-    h1 {
-      font-size: 42px;
-      margin-top: 3rem;
-    }
+      h1 {
+        font-size: 42px;
+        margin-top: 3rem;
+      }
 
-    .timer {
-      font-size: 72px;
-      margin: 2rem 0;
-    }
+      nav {
+        button {
+          padding: 8px 13px;
+          border-radius: 4px;
+          border: none;
+        }
 
-    .timer-button {
-      font-size: 22px;
-      background-color: buttonface;
-      height: 50px;
-      width: 150px;
+        #pomodoroNavButton {
+          background-color: lightgray;
+        }
+
+        #shortBreakNavButton,
+        #longBreakNavButton {
+          background-color: buttonface;
+        }
+      }
+
+      .timer {
+        font-size: 72px;
+        margin: 2rem 0;
+      }
+
+      .timer-button {
+        font-size: 22px;
+        background-color: buttonface;
+        border-radius: 4px;
+        border: none;
+        height: 50px;
+        width: 150px;
+      }
+
+      #pomodoroContainer {
+        #pomodoroStopButton,
+        #pomodoroResetButton {
+          display: none;
+        }
+      }
+
+      #shortBreakContainer {
+        display: none;
+
+        #shortBreakStopButton,
+        #shortBreakResetButton {
+          display: none;
+        }
+      }
+
+      #longBreakContainer {
+        display: none;
+
+        #longBreakStopButton,
+        #longBreakResetButton {
+          display: none;
+        }
+      }
     }
   }
-}
-
-button {
-  font-size: large;
-  padding: 8px 13px;
-  border-radius: 4px;
-  border: none;
-}
-
-#pomodoroStopButton,
-#shortBreakStopButton,
-#longBreakStopButton {
-  display: none;
-}
-
-#pomodoroResetButton,
-#shortBreakResetButton,
-#longBreakResetButton {
-  display: none;
-}
-
-#shortBreakContainer,
-#longBreakContainer {
-  display: none;
-}
-
-#pomodoroNavButton {
-  background-color: lightgray;
-}
-
-#shortBreakNavButton,
-#longBreakNavButton {
-  background-color: buttonface;
 }
