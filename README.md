@@ -23,6 +23,7 @@
 - [x] center content
 - [x] fix placement of stop/reset buttons when content is centered
 - [ ] center all content vertically?
+- [ ] add button hover effect.
 
 ## Functional Requirements
 
