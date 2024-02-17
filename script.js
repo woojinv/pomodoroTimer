@@ -34,7 +34,7 @@ const pomodoroResetButton = document.getElementById('pomodoroResetButton');
 const shortBreakResetButton = document.getElementById('shortBreakResetButton');
 const longBreakResetButton = document.getElementById('longBreakResetButton');
 
-// Global Variables
+// Global variables
 let pomodoroTimer;
 let shortBreakTimer;
 let longBreakTimer;
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /*
- * Navigation Buttons
+ * Navigation buttons
  */
 pomodoroNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
@@ -104,7 +104,7 @@ longBreakNavButton.addEventListener('click', function () {
 });
 
 /*
- * Start Buttons
+ * Start buttons
  */
 pomodoroStartButton.addEventListener('click', function () {
   handleShortBreakReset();
@@ -241,7 +241,7 @@ longBreakStartButton.addEventListener('click', function () {
 });
 
 /*
- * Stop Buttons
+ * Stop buttons
  */
 pomodoroStopButton.addEventListener('click', function () {
   hide(pomodoroStopButton);
@@ -268,14 +268,14 @@ longBreakStopButton.addEventListener('click', function () {
 });
 
 /*
- * Reset Buttons
+ * Reset buttons
  */
 pomodoroResetButton.addEventListener('click', handlePomdoroReset);
 shortBreakResetButton.addEventListener('click', handleShortBreakReset);
 longBreakResetButton.addEventListener('click', handleLongBreakReset);
 
 /*
- * Helper Functions
+ * Helper functions
  */
 
 function handlePomdoroReset() {
