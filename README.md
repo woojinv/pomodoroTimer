@@ -21,7 +21,7 @@
 - [x] fix focus state when navigating to active session. auto focus on stop button if counting down.
 - [x] display indicator for current active session.
 - [x] center content
-- [ ] decide on css
+- [ ] fix placement of stop/reset buttons
 
 ## Functional Requirements
 
