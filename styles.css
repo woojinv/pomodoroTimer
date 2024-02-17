@@ -18,3 +18,7 @@
 #longBreakContainer {
   display: none;
 }
+
+#pomodoroNavButton {
+  background-color: lightgray;
+}

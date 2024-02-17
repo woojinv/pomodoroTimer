@@ -3,6 +3,9 @@ const pomodoroSeconds = 5;
 const shortBreakSeconds = 6;
 const longBreakSeconds = 7;
 
+const accentColor = 'lightgray';
+const defaultButtonColor = 'buttonface';
+
 // Navigation buttons
 const pomodoroNavButton = document.getElementById('pomodoroNavButton');
 const shortBreakNavButton = document.getElementById('shortBreakNavButton');
@@ -66,6 +69,10 @@ pomodoroNavButton.addEventListener('click', function () {
 
   show(pomodoroContainer);
   pomodoroActive ? pomodoroStopButton.focus() : pomodoroStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
+  longBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 shortBreakNavButton.addEventListener('click', function () {
@@ -76,6 +83,10 @@ shortBreakNavButton.addEventListener('click', function () {
   shortBreakActive
     ? shortBreakStopButton.focus()
     : shortBreakStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+  longBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 longBreakNavButton.addEventListener('click', function () {
@@ -84,6 +95,10 @@ longBreakNavButton.addEventListener('click', function () {
 
   show(longBreakContainer);
   longBreakActive ? longBreakStopButton.focus() : longBreakStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 /*
@@ -122,12 +137,16 @@ pomodoroStartButton.addEventListener('click', function () {
 
       numPomodoros += 1;
 
+      pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+
       if (numPomodoros !== 4) {
         show(shortBreakContainer);
         shortBreakStartButton.focus();
+        shortBreakNavButton.style.backgroundColor = accentColor;
       } else {
         show(longBreakContainer);
         longBreakStartButton.focus();
+        longBreakNavButton.style.backgroundColor = accentColor;
       }
 
       notify();
@@ -169,6 +188,9 @@ shortBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
       pomodoroStartButton.focus();
 
+      shortBreakNavButton.style.backgroundColor = defaultButtonColor;
+      pomodoroNavButton.style.backgroundColor = accentColor;
+
       notify();
     }
   }, 1000);
@@ -207,6 +229,9 @@ longBreakStartButton.addEventListener('click', function () {
 
       show(pomodoroContainer);
       pomodoroStartButton.focus();
+
+      longBreakNavButton.style.backgroundColor = defaultButtonColor;
+      pomodoroNavButton.style.backgroundColor = accentColor;
 
       notify();
     }
