@@ -187,11 +187,13 @@ longBreakStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(longBreakTimerEl);
 
   longBreakTimer = setInterval(function () {
+    longBreakActive = true;
     totalSeconds -= 1;
     setTimerEl(longBreakTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(longBreakTimer);
+      longBreakActive = false;
 
       hide(shortBreakContainer);
 
@@ -235,6 +237,7 @@ longBreakStopButton.addEventListener('click', function () {
   show(longBreakStartButton);
   longBreakStartButton.focus();
   stopTimer(longBreakTimer);
+  longBreakActive = false;
 });
 
 /*
@@ -276,6 +279,7 @@ function handleShortBreakReset() {
 
 function handleLongBreakReset() {
   stopTimer(longBreakTimer);
+  longBreakActive = false;
 
   hide(longBreakResetButton);
   hide(longBreakStopButton);
