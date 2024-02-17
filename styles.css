@@ -22,3 +22,8 @@
 #pomodoroNavButton {
   background-color: lightgray;
 }
+
+#shortBreakNavButton,
+#longBreakNavButton {
+  background-color: buttonface;
+}
