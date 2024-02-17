@@ -49,3 +49,4 @@
 ## General notes
 
 - have separate timers that are hidden and are toggled based on what interval is currently active.
+- [link to favicon](https://icons8.com/icons/set/timer)
