@@ -18,7 +18,10 @@
 - [x] stop and reset other timers when starting a new timer so that multiple timers aren't counting down together.
 - [x] implement notifications for timer end.
 - [x] think of scenarios for when to autofocus which buttons.
-- [ ] display indicator for current active session.
+- [x] fix focus state when navigating to active session. auto focus on stop button if counting down.
+- [x] display indicator for current active session.
+- [x] center content
+- [ ] decide on css
 
 ## Functional Requirements
 
@@ -47,4 +50,4 @@
 
 ## General notes
 
-- have separate timers that are hidden and are toggled based on what interval is currently active.
+- [link to favicon](https://icons8.com/icons/set/timer)

@@ -3,6 +3,9 @@ const pomodoroSeconds = 25 * 60;
 const shortBreakSeconds = 5 * 60;
 const longBreakSeconds = 15 * 60;
 
+const accentColor = 'lightgray';
+const defaultButtonColor = 'buttonface';
+
 // Navigation buttons
 const pomodoroNavButton = document.getElementById('pomodoroNavButton');
 const shortBreakNavButton = document.getElementById('shortBreakNavButton');
@@ -36,7 +39,13 @@ let pomodoroTimer;
 let shortBreakTimer;
 let longBreakTimer;
 
+let pomodoroActive = false;
+let shortBreakActive = false;
+let longBreakActive = false;
+
 let numPomodoros = 0;
+
+pomodoroStartButton.focus();
 
 // Get permission to send notifications.
 document.addEventListener('DOMContentLoaded', function () {
@@ -61,7 +70,11 @@ pomodoroNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(pomodoroContainer);
-  pomodoroStartButton.focus();
+  pomodoroActive ? pomodoroStopButton.focus() : pomodoroStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
+  longBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 shortBreakNavButton.addEventListener('click', function () {
@@ -69,7 +82,13 @@ shortBreakNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(shortBreakContainer);
-  shortBreakStartButton.focus();
+  shortBreakActive
+    ? shortBreakStopButton.focus()
+    : shortBreakStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+  longBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 longBreakNavButton.addEventListener('click', function () {
@@ -77,7 +96,11 @@ longBreakNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
 
   show(longBreakContainer);
-  longBreakStartButton.focus();
+  longBreakActive ? longBreakStopButton.focus() : longBreakStartButton.focus();
+
+  this.style.backgroundColor = accentColor;
+  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
 });
 
 /*
@@ -96,11 +119,13 @@ pomodoroStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(pomodoroTimerEl);
 
   pomodoroTimer = setInterval(function () {
+    pomodoroActive = true;
     totalSeconds -= 1;
     setTimerEl(pomodoroTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(pomodoroTimer);
+      pomodoroActive = false;
 
       hide(longBreakContainer);
 
@@ -114,12 +139,16 @@ pomodoroStartButton.addEventListener('click', function () {
 
       numPomodoros += 1;
 
+      pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+
       if (numPomodoros !== 4) {
         show(shortBreakContainer);
         shortBreakStartButton.focus();
+        shortBreakNavButton.style.backgroundColor = accentColor;
       } else {
         show(longBreakContainer);
         longBreakStartButton.focus();
+        longBreakNavButton.style.backgroundColor = accentColor;
       }
 
       notify();
@@ -140,11 +169,13 @@ shortBreakStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(shortBreakTimerEl);
 
   shortBreakTimer = setInterval(function () {
+    shortBreakActive = true;
     totalSeconds -= 1;
     setTimerEl(shortBreakTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(shortBreakTimer);
+      shortBreakActive = false;
 
       hide(longBreakContainer);
 
@@ -158,6 +189,9 @@ shortBreakStartButton.addEventListener('click', function () {
 
       show(pomodoroContainer);
       pomodoroStartButton.focus();
+
+      shortBreakNavButton.style.backgroundColor = defaultButtonColor;
+      pomodoroNavButton.style.backgroundColor = accentColor;
 
       notify();
     }
@@ -177,11 +211,13 @@ longBreakStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(longBreakTimerEl);
 
   longBreakTimer = setInterval(function () {
+    longBreakActive = true;
     totalSeconds -= 1;
     setTimerEl(longBreakTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(longBreakTimer);
+      longBreakActive = false;
 
       hide(shortBreakContainer);
 
@@ -196,6 +232,9 @@ longBreakStartButton.addEventListener('click', function () {
       show(pomodoroContainer);
       pomodoroStartButton.focus();
 
+      longBreakNavButton.style.backgroundColor = defaultButtonColor;
+      pomodoroNavButton.style.backgroundColor = accentColor;
+
       notify();
     }
   }, 1000);
@@ -209,6 +248,7 @@ pomodoroStopButton.addEventListener('click', function () {
   show(pomodoroStartButton);
   pomodoroStartButton.focus();
   stopTimer(pomodoroTimer);
+  pomodoroActive = false;
 });
 
 shortBreakStopButton.addEventListener('click', function () {
@@ -216,6 +256,7 @@ shortBreakStopButton.addEventListener('click', function () {
   show(shortBreakStartButton);
   shortBreakStartButton.focus();
   stopTimer(shortBreakTimer);
+  shortBreakActive = false;
 });
 
 longBreakStopButton.addEventListener('click', function () {
@@ -223,6 +264,7 @@ longBreakStopButton.addEventListener('click', function () {
   show(longBreakStartButton);
   longBreakStartButton.focus();
   stopTimer(longBreakTimer);
+  longBreakActive = false;
 });
 
 /*
@@ -238,6 +280,7 @@ longBreakResetButton.addEventListener('click', handleLongBreakReset);
 
 function handlePomdoroReset() {
   stopTimer(pomodoroTimer);
+  pomodoroActive = false;
 
   hide(pomodoroResetButton);
   hide(pomodoroStopButton);
@@ -250,6 +293,7 @@ function handlePomdoroReset() {
 
 function handleShortBreakReset() {
   stopTimer(shortBreakTimer);
+  shortBreakActive = false;
 
   hide(shortBreakResetButton);
   hide(shortBreakStopButton);
@@ -262,6 +306,7 @@ function handleShortBreakReset() {
 
 function handleLongBreakReset() {
   stopTimer(longBreakTimer);
+  longBreakActive = false;
 
   hide(longBreakResetButton);
   hide(longBreakStopButton);

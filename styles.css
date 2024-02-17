@@ -1,3 +1,7 @@
+body {
+  text-align: center;
+}
+
 #pomodoroStopButton,
 #shortBreakStopButton,
 #longBreakStopButton {
@@ -17,4 +21,13 @@
 #shortBreakContainer,
 #longBreakContainer {
   display: none;
+}
+
+#pomodoroNavButton {
+  background-color: lightgray;
+}
+
+#shortBreakNavButton,
+#longBreakNavButton {
+  background-color: buttonface;
 }
