@@ -73,7 +73,9 @@ shortBreakNavButton.addEventListener('click', function () {
   hide(longBreakContainer);
 
   show(shortBreakContainer);
-  shortBreakStartButton.focus();
+  shortBreakActive
+    ? shortBreakStopButton.focus()
+    : shortBreakStartButton.focus();
 });
 
 longBreakNavButton.addEventListener('click', function () {
@@ -81,7 +83,7 @@ longBreakNavButton.addEventListener('click', function () {
   hide(shortBreakContainer);
 
   show(longBreakContainer);
-  longBreakStartButton.focus();
+  longBreakActive ? longBreakStopButton.focus() : longBreakStartButton.focus();
 });
 
 /*
@@ -146,11 +148,13 @@ shortBreakStartButton.addEventListener('click', function () {
   let totalSeconds = getTotalSeconds(shortBreakTimerEl);
 
   shortBreakTimer = setInterval(function () {
+    shortBreakActive = true;
     totalSeconds -= 1;
     setTimerEl(shortBreakTimerEl, totalSeconds);
 
     if (totalSeconds === 0) {
       stopTimer(shortBreakTimer);
+      shortBreakActive = false;
 
       hide(longBreakContainer);
 
@@ -223,6 +227,7 @@ shortBreakStopButton.addEventListener('click', function () {
   show(shortBreakStartButton);
   shortBreakStartButton.focus();
   stopTimer(shortBreakTimer);
+  shortBreakActive = false;
 });
 
 longBreakStopButton.addEventListener('click', function () {
@@ -258,6 +263,7 @@ function handlePomdoroReset() {
 
 function handleShortBreakReset() {
   stopTimer(shortBreakTimer);
+  shortBreakActive = false;
 
   hide(shortBreakResetButton);
   hide(shortBreakStopButton);
