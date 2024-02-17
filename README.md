@@ -24,6 +24,7 @@
 - [x] fix placement of stop/reset buttons when content is centered
 - [ ] center all content vertically?
 - [ ] add button hover effect.
+- [ ] refactor to add css classes instead of directly modifying styles with JS.
 
 ## Functional Requirements
 
@@ -53,3 +54,7 @@
 ## General notes
 
 - [link to favicon](https://icons8.com/icons/set/timer)
+
+## Learnings
+
+- Preferred to modify styling in JS by assigning classes, not directly modifying the style attribute of an element.
