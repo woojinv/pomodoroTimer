@@ -16,18 +16,16 @@ body {
       margin-top: 3rem;
     }
 
-    nav {
-      margin-bottom: 1rem;
-    }
-
     .timer {
       font-size: 72px;
-      margin-bottom: 1rem;
+      margin: 2rem 0;
     }
 
     .timer-button {
+      font-size: 22px;
       background-color: buttonface;
-      width: 100px;
+      height: 50px;
+      width: 150px;
     }
   }
 }
