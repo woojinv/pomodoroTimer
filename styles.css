@@ -22,14 +22,61 @@
           border: none;
         }
 
-        #pomodoroNavButton {
+        .pomodoro-nav-button.active {
           background-color: lightgray;
         }
 
-        #shortBreakNavButton,
-        #longBreakNavButton {
-          background-color: buttonface;
+        .short-break-nav-button.active {
+          background-color: lightgray;
         }
+      }
+
+      .pomodoro-container {
+        .pomodoro-timer {
+          font-size: 72px;
+          margin: 2rem 0;
+        }
+
+        button {
+          font-size: 22px;
+          background-color: buttonface;
+          border-radius: 4px;
+          border: none;
+          height: 50px;
+          width: 150px;
+        }
+
+        .pomodoro-start-button {
+          display: none;
+        }
+
+        .pomodoro-start-button.active {
+          display: inline-block;
+        }
+
+        .pomodoro-stop-button {
+          display: none;
+        }
+
+        .pomodoro-stop-button.active {
+          display: inline-block;
+        }
+
+        .pomodoro-reset-button {
+          display: none;
+        }
+
+        .pomodoro-reset-button.active {
+          display: inline-block;
+        }
+      }
+
+      .short-break-container {
+        display: none;
+      }
+
+      .long-break-container {
+        display: none;
       }
 
       .timer {
@@ -47,13 +94,4 @@
       }
     }
   }
-}
-
-/* Utility classes */
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: inline-block;
 }

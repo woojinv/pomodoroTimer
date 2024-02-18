@@ -14,28 +14,28 @@
     <h1>Pomodoro Timer</h1>
 
     <nav>
-      <button id="pomodoroNavButton">Pomodoro</button>
-      <button id="shortBreakNavButton">Short Break</button>
+      <button id="pomodoroNavButton" class="pomodoro-nav-button active">Pomodoro</button>
+      <button id="shortBreakNavButton" class="short-break-nav-button">Short Break</button>
       <button id="longBreakNavButton">Long Break</button>
     </nav>
 
-    <div id="pomodoroContainer">
-      <div id="pomodoroTimer" class="timer">00:05</div>
-      <button id="pomodoroStartButton" class="timer-button">Start</button>
-      <button id="pomodoroStopButton" class="timer-button hidden">Stop</button>
-      <button id="pomodoroResetButton" class="timer-button hidden">Reset</button>
+    <div id="pomodoroContainer" class="pomodoro-container">
+      <div id="pomodoroTimer" class="pomodoro-timer">00:05</div>
+      <button id="pomodoroStartButton" class="pomodoro-start-button active">Start</button>
+      <button id="pomodoroStopButton" class="pomodoro-stop-button">Stop</button>
+      <button id="pomodoroResetButton" class="pomodoro-reset-button">Reset</button>
     </div>
 
-    <div id="shortBreakContainer" class="hidden">
+    <div id="shortBreakContainer" class="short-break-container">
       <div id="shortBreakTimer" class="timer">00:06</div>
       <button id="shortBreakStartButton" class="timer-button">Start</button>
       <button id="shortBreakStopButton" class="timer-button hidden">Stop</button>
       <button id="shortBreakResetButton" class="timer-button hidden">Reset</button>
     </div>
 
-    <div id="longBreakContainer" class="hidden">
+    <div id="longBreakContainer" class="long-break-container">
       <div id="longBreakTimer" class="timer">00:07</div>
-      <button id="longBreakStartButton" class="timer-button hidden">Start</button>
+      <button id="longBreakStartButton" class="timer-button">Start</button>
       <button id="longBreakStopButton" class="timer-button hidden">Stop</button>
       <button id="longBreakResetButton" class="timer-button hidden">Reset</button>
     </div>

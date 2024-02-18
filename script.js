@@ -72,9 +72,10 @@ pomodoroNavButton.addEventListener('click', function () {
   show(pomodoroContainer);
   pomodoroActive ? pomodoroStopButton.focus() : pomodoroStartButton.focus();
 
-  this.style.backgroundColor = accentColor;
-  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
-  longBreakNavButton.style.backgroundColor = defaultButtonColor;
+  this.classList.remove('inactive-timer');
+  this.classList.add('active-timer');
+  shortBreakNavButton.classList.remove('active-timer');
+  longBreakNavButton.classList.remove('active-timer');
 });
 
 shortBreakNavButton.addEventListener('click', function () {
@@ -84,9 +85,10 @@ shortBreakNavButton.addEventListener('click', function () {
   show(shortBreakContainer);
   shortBreakActive ? shortBreakStopButton.focus() : shortBreakStartButton.focus();
 
-  this.style.backgroundColor = accentColor;
-  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
-  longBreakNavButton.style.backgroundColor = defaultButtonColor;
+  this.classList.remove('inactive-timer');
+  this.classList.add('active-timer');
+  pomodoroNavButton.classList.remove('active-timer');
+  longBreakNavButton.classList.remove('active-timer');
 });
 
 longBreakNavButton.addEventListener('click', function () {
@@ -96,9 +98,10 @@ longBreakNavButton.addEventListener('click', function () {
   show(longBreakContainer);
   longBreakActive ? longBreakStopButton.focus() : longBreakStartButton.focus();
 
-  this.style.backgroundColor = accentColor;
-  pomodoroNavButton.style.backgroundColor = defaultButtonColor;
-  shortBreakNavButton.style.backgroundColor = defaultButtonColor;
+  this.classList.remove('inactive-timer');
+  this.classList.add('active-timer');
+  pomodoroNavButton.classList.remove('active-timer');
+  shortBreakNavButton.classList.remove('active-timer');
 });
 
 /*
@@ -137,16 +140,21 @@ pomodoroStartButton.addEventListener('click', function () {
 
       numPomodoros += 1;
 
-      pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+      // pomodoroNavButton.style.backgroundColor = defaultButtonColor;
+      // pomodoroNavButton.classList.remove('active-timer');
+      pomodoroNavButton.classList.toggle('active');
 
       if (numPomodoros !== 4) {
         show(shortBreakContainer);
         shortBreakStartButton.focus();
-        shortBreakNavButton.style.backgroundColor = accentColor;
+        // shortBreakNavButton.style.backgroundColor = accentColor;
+        // shortBreakNavButton.classList.add('active-timer');
+        shortBreakNavButton.classList.toggle('active');
       } else {
         show(longBreakContainer);
         longBreakStartButton.focus();
-        longBreakNavButton.style.backgroundColor = accentColor;
+        // longBreakNavButton.style.backgroundColor = accentColor;
+        longBreakNavButton.classList.toggle('active');
       }
 
       notify();
@@ -316,13 +324,11 @@ function handleLongBreakReset() {
 }
 
 function show(domElement) {
-  domElement.classList.remove('hidden');
-  domElement.classList.add('visible');
+  domElement.classList.toggle('active');
 }
 
 function hide(domElement) {
-  domElement.classList.remove('visible');
-  domElement.classList.add('hidden');
+  domElement.classList.toggle('active');
 }
 
 function stopTimer(timer) {
